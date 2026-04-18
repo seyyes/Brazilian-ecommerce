@@ -14,3 +14,21 @@ models:
         tests:
           - not_null
           - relationships: { to: ref('stg_customers'), field: customer_id }
+
+      - name: order_status
+        description: "Status of the order"
+
+      - name: purchase_ts
+        description: "Timestamp when the order was placed"  
+
+      - name: approved_ts
+        description: "Timestamp when the order payment was approved"
+
+      - name: delivered_carrier_ts
+        description: "Timestamp when the order was handled to the logistic partner"
+      
+      - name: delivered_customer_ts
+        description: "Timestamp when the order was delivered to the customer"
+      
+      - name: estimated_delivery_ts
+        description: "Estimated delivery timestamp informed to customer at the purchase moment"
