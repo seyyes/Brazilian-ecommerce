@@ -1,0 +1,21 @@
+version: 2
+
+models:
+- name: stg_olist_geolocation
+  description: "Staging table for geolocation data with cleaned fields"
+  columns:
+      - name: zip_code_prefix
+        description: "The zip code prefix for geolocation data"
+        tests:
+          - not_null
+      - name: latitude
+        description: "Latitude coordinate"
+      
+      - name: longitude
+        description: "Longitude coordinate"
+
+      - name: city
+        description: "City name (lowercase normalized)"
+
+      - name: state
+        description: "State code (uppercase)"

@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: stg_olist_order_payments
+    description: "Staging table for order payments data with cleaned fields"
+    columns:
+      - name: order_id
+        description: "Id of the order"
+        tests:
+          - not_null
+          - relationships: { to: ref('stg_orders'), field: order_id }
