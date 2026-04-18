@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_olist_customers
+    description: "Staging table for customers data with cleaned fields"
+    columns:
+      - name: customer_id
+        description: "Id of the customer in an order"
+        tests:
+          - unique
+          - not_null
+      - name: customer_unique_id
+        description: "Unique identifier of the customer across all orders"  
+        tests:
+          - not_null

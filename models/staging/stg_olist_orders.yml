@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: stg_olist_orders
+    description: "Staging table for orders data with cleaned fields"
+    columns:
+      - name: order_id
+        description: "Id of the order"
+        tests:
+          - not_null
+          - relationships: { to: ref('stg_orders'), field: order_id }
+      - name: customer_id
+        description: "Id of the customer"
+        tests:
+          - not_null
+          - relationships: { to: ref('stg_customers'), field: customer_id }

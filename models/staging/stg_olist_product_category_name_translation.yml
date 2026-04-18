@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_olist_product_category_name_translation
+    description: "Staging table for product category name translation data"
+    columns:
+      - name: product_category_name
+        description: "Name of the product category in Portuguese"
+        tests:
+          - not_null
+          - unique
+      - name: product_category_name_english
+        description: "English translation of the product category name"
+        tests:
+          - not_null

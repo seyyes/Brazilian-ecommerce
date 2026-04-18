@@ -1,0 +1,32 @@
+version: 2
+
+sources:
+  - name: ecommerce_supply_chain_dataset  
+    database: ecommerce-supply-chain
+    schema: ecommerce_supply_chain_dataset
+    description: "Brazilian ecommerce sources"
+    tables:
+      - name: olist_customers_raw
+        description: "Customers data from Brazilian ecommerce"
+      - name: olist_geolocation_raw
+        description: "Geolocation data from Brazilian ecommerce"
+      - name: olist_order_items_raw
+        description: "Order items data from Brazilian ecommerce"
+      - name: olist_order_payments_raw
+        description: "Order payments data from Brazilian ecommerce"
+      - name: olist_order_reviews_raw
+        description: "Order reviews data from Brazilian ecommerce"
+      - name: olist_orders_raw
+        description: "Orders data from Brazilian ecommerce"
+      - name: olist_products_raw
+        description: "Products data from Brazilian ecommerce"
+      - name: olist_sellers_raw
+        description: "Sellers data from Brazilian ecommerce"
+      - name: product_category_name_translation_raw
+        description: "Product category name translation data from Brazilian ecommerce"
+
+
+
+
+
+  
