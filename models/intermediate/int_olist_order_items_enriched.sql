@@ -11,6 +11,12 @@ reviews AS (
     FROM {{ref('stg_olist_order_reviews')}}
     GROUP BY order_id
 ),
+customers AS (
+    SELECT 
+        customer_id,
+        customer_unique_id
+    FROM {{ ref('stg_olist_customers') }}
+),
 joined_data AS (
     SELECT 
         oi.order_item_sk,
@@ -31,12 +37,14 @@ joined_data AS (
         o.delivered_customer_ts,
         o.estimated_delivery_ts,
 
-        r.review_score
+        r.review_score,
+        c.customer_unique_id
     FROM order_items oi
     INNER JOIN orders o ON oi.order_id = o.order_id
     LEFT JOIN reviews r ON oi.order_id = r.order_id
+    LEFT JOIN customers c ON o.customer_id = c.customer_id
 ),
-final_data AS (
+metrics AS (
     SELECT 
         *,
         --Delivery time in days
@@ -67,5 +75,21 @@ final_data AS (
         END AS delivery_status
 
     FROM joined_data
+),
+with_window AS (
+    SELECT 
+        *,
+        -- AVG delay time per seller
+        AVG(delay_days) OVER (PARTITION BY seller_id) AS avg_delay_days_per_seller
+    FROM metrics
+),
+final_ranked_data AS (
+    SELECT 
+        *,              
+        -- Ranking of sellers based on average delay time
+        RANK() OVER ( 
+            ORDER BY avg_delay_days_per_seller
+        ) AS seller_delay_ranking
+    FROM with_window
 )
-SELECT * FROM final_data
+SELECT * FROM final_ranked_data
