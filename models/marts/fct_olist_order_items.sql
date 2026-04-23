@@ -21,6 +21,7 @@ final_data AS (
         handling_time_days,
         delay_days,
         delivery_status,
+        purchase_ts,
 
         --Business flags
 
