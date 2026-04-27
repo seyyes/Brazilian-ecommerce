@@ -41,7 +41,7 @@ Star schema:
 - Additional Dimensions (Used for time-series analysis and delay segmentation): 
     - dim_date
     - dim_delay_bucket
-    
+
 ![Data model](https://github.com/seyyes/Brazilian-ecommerce/blob/master/assets/data_model.png)
 
 ## 5. Data Transformations
@@ -72,6 +72,7 @@ Key metrics created:
 - delivery performance
 - delay trends
 - geographic distribution
+
 ![Logistics overview](https://github.com/seyyes/Brazilian-ecommerce/blob/master/assets/logistics_overview.png)
 
 
@@ -79,11 +80,13 @@ Key metrics created:
 - top delayed sellers
 - Important seller with delays and bad handling
 - Pareto analysis
+
 ![Seller performance](https://github.com/seyyes/Brazilian-ecommerce/blob/master/assets/seller_performance.png)
 
 ### 7.3 Customer Satisfaction
 - impact of delays on reviews
 - satisfaction vs delivery time
+
 ![Customer satisfaction](https://github.com/seyyes/Brazilian-ecommerce/blob/master/assets/customer_satisfaction.png)
 
 ### 7.4 KPIs
@@ -95,9 +98,9 @@ Key metrics created:
 - Low review rate (% of reviews <= 2)
 - ...
 
-![Power BI report](https://app.powerbi.com/groups/9416cacc-2758-4c86-862a-3ff396d0efd2/reports/6cb78111-db36-40d3-825b-6e99b96e41f8?ctid=4098d4d7-784b-4d99-a74e-86960f12748a&pbi_source=linkShare)
+[Power BI report](https://app.powerbi.com/groups/9416cacc-2758-4c86-862a-3ff396d0efd2/reports/6cb78111-db36-40d3-825b-6e99b96e41f8?ctid=4098d4d7-784b-4d99-a74e-86960f12748a&pbi_source=linkShare)
 
-![Complete report in pdf](https://github.com/seyyes/Brazilian-ecommerce/blob/master/assets/Olist_Brazilian_Ecommerce_Dashboard.pdf)
+[Complete report in pdf](https://github.com/seyyes/Brazilian-ecommerce/blob/master/assets/Olist_Brazilian_Ecommerce_Dashboard.pdf)
 
 ## 8. Key Insights
 
