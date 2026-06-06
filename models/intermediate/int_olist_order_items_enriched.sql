@@ -54,6 +54,13 @@ metrics AS (
         ELSE TIMESTAMP_DIFF(delivered_customer_ts, purchase_ts, DAY)
         END AS delivery_time_days,
 
+        --promised delivery time in days
+        CASE 
+        WHEN purchase_ts IS NULL OR estimated_delivery_ts IS NULL THEN NULL
+        WHEN estimated_delivery_ts < purchase_ts THEN NULL
+        ELSE TIMESTAMP_DIFF(estimated_delivery_ts, purchase_ts, DAY)
+        END AS promised_delivery_time_days,
+
         -- Seller handling time in days
         CASE 
         WHEN delivered_carrier_ts IS NULL OR approved_ts IS NULL THEN NULL

@@ -18,10 +18,13 @@ final_data AS (
         freight_value,
         review_score,
         delivery_time_days,
+        promised_delivery_time_days,
         handling_time_days,
         delay_days,
         delivery_status,
         purchase_ts,
+        estimated_delivery_ts,
+        delivered_customer_ts,
 
         --Business flags
 
