@@ -122,7 +122,7 @@ It helps understanding how logistics performance affects customer experience.
 ### 7.1 Satisfaction Loss by Delay Bucket
 To better understand the customer impact of delays, customer ratings were analyzed across delivery delay categories.
 
-![Satisfaction Loss by Delay Bucket](https://github.com/seyyes/Brazilian-ecommerce/blob/master/assets/customer_satisfaction.png)
+![Satisfaction Loss by Delay Bucket](https://github.com/seyyes/Brazilian-ecommerce/blob/master/assets/DelayBucketVSReviewLoss.png)
 
 #### Observation
 
@@ -135,7 +135,7 @@ To better understand the customer impact of delays, customer ratings were analyz
 
 ### 7.2 Delivery Variability Risk Analysis
 
-![Delivery Variability Risk Analysis](https://github.com/seyyes/Brazilian-ecommerce/blob/master/assets/customer_satisfaction.png)
+![Delivery Variability Risk Analysis](https://github.com/seyyes/Brazilian-ecommerce/blob/master/assets/Variability_segment.png)
 
 #### Insight
 
@@ -143,10 +143,14 @@ To better understand the customer impact of delays, customer ratings were analyz
 #### Recommendation
 
 
-### 7.3 Strategic Recommendations
+### 7.3 States to prioritize
+
+![States to prioritize](https://github.com/seyyes/Brazilian-ecommerce/blob/master/assets/States_to_prioritize.png)
+
+### 7.4 Strategic Recommendations
 
 
-## 11. Project Structure
+## 8. Project Structure
 
 models/
   - staging/
