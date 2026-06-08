@@ -1,4 +1,4 @@
-# Optimizing E-commerce Logistics Performance: Delivery Delays & Seller Analysis (Olist Dataset)
+# E-commerce Logistics Analytics: Linking Delivery Performance, Customer Experience and Operational Priorities at Olist
 
 
 ## 1. Project Overview
@@ -8,10 +8,6 @@ As order volumes grow, maintaining reliable delivery performance becomes critica
 This project analyzes Olist's logistics operations to answer a key business question:
 **How do delivery performance issues impact customer experience, and where should operational improvement efforts be prioritized?**
 Using SQL, BigQuery, dbt and Power BI, I built an end-to-end analytics solution to evaluate delivery reliability, identify the main drivers of delays, assess seller performance, and quantify the impact of logistics performance on customer satisfaction.
-
-
-## Resources:
-- Dataset (https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) 
 
 
 ## 2. Business Problem
@@ -86,11 +82,10 @@ Key metrics created:
 - Only 6.45% of deliveries are delayed, indicating a generally reliable logistics network.
 - Orders are delivered on average earlier than promised, suggesting conservative delivery commitments.
 - Delivery performance varies significantly across states, highlighting regional logistics disparities.
-- Delay rates tend to increase during high-volume periods, suggesting capacity constraints during demand peaks.
 
 ### Business Interpretation
 Overall logistics performance is strong, however, performance is not evenly distributed across the network.
-The combination of high on-time delivery rates and early deliveries suggests that delivery promises may be **overly estimated**. Even if this protects service levels, it may also be wise to reconsider them and provide more accurate ones.
+The combination of high on-time delivery rates and early deliveries suggests that delivery promises may be **overly conservative**. Even if this protects service levels, it may also be wise to reconsider them and provide more accurate ones.
 Regional disparities indicate that improvement efforts should focus on specific areas rather than the entire logistics network.
 
 ![Logistics overview](https://github.com/seyyes/Brazilian-ecommerce/blob/master/assets/logistics_overview.png)
@@ -110,8 +105,8 @@ Regional disparities indicate that improvement efforts should focus on specific 
 - Delivery delays are highly concentrated among a relatively small group of sellers.
 - A limited number of sellers (341) account for the majority of delayed orders, revealing a strong Pareto effect.
 - Seller performance varies considerably, even among sellers with similar order volumes.
-- Some high volume and Revenue sellers might be risky with large delays and bad handling time.
-- Late order handling has a huge impact on order delays
+- Some high-volume sellers combine long handling times and elevated delay rates, creating a disproportionate impact on overall logistics performance.
+- Longer handling times are consistently associated with higher delays, suggesting that seller operations play an important role in delivery performance.
 
 ### Business Interpretation
 The analysis suggests that logistics improvement initiatives should prioritize seller-level interventions.
@@ -121,8 +116,7 @@ This finding provides a clear opportunity to improve service quality while minim
 ![Seller performance](https://github.com/seyyes/Brazilian-ecommerce/blob/master/assets/seller_performance.png)
 
 ### 6.3 Customer Satisfaction
-It helps understanding how logistics performance affects customer experience.
-It also helps answering to the question : How does delivery performance affect customer satisfaction?
+**Objective**: understanding how logistics performance affects customer experience.
 ### KPIs
 - **Delayed Order Rate**: to quantity service failures
 - **Avg Review Score**: to measure satisfation
@@ -168,8 +162,8 @@ To improve logistic performances and customer satisfaction, it would be better t
 ![Delivery Variability Risk Analysis](https://github.com/seyyes/Brazilian-ecommerce/blob/master/assets/Variability_segment.png)
 
 #### Insight
-Olist's logistics network generally delivers faster than promised across all Brazilian states.
-However, average delivery performance can hide significant operational risks. Delivery performance is not equally predictable and several states (SP, PR MG,...) demonstrate a high level of delivery reliability due to low variability.Unfortunately, states such as AP, RR and SE are showing high delivery variability, indicating inconsistent service levels.
+Most Brazilian states receive deliveries earlier than the promised delivery date.
+However, average delivery performance can hide significant operational risks. Delivery performance is not equally predictable and several states such as SP, PR and MG demonstrate a high level of delivery reliability due to low variability.Unfortunately, states such as AP, RR and SE are showing high delivery variability, indicating inconsistent service levels.
 High variability reduces the reliability of delivery promises and increases operational uncertainty.
 
 #### Recommendation
@@ -178,9 +172,8 @@ It would be better to monitor regions with elevated delivery variability and pro
 ### 7.3 States to prioritize
 Where should Olist prioritize operational improvements?
 #### Insight
-States with both high order volumes and elevated delay rates represent the largest opportunity for operational improvement.
-Although some states exhibit higher delay rates, their overall impact remains limited due to lower order volumes.
-Conversely, high-volume states generate a substantially larger number of delayed orders and should therefore be prioritized.
+States combining high order volumes, elevated delay rates such as SP and RJ represent a large opportunity for operational improvement.
+In contrast, some low-volume states such as SE and PB exhibit higher delay rates but contribute relatively little to overall network performance.
 
 #### Business Impact
 Prioritizing high-volume, high-delay regions allows Olist to maximize the operational impact of improvement initiatives.
@@ -188,19 +181,27 @@ Prioritizing high-volume, high-delay regions allows Olist to maximize the operat
 ![States to prioritize](https://github.com/seyyes/Brazilian-ecommerce/blob/master/assets/States_to_prioritize.png)
 
 ### 7.4 Strategic Recommendations
-#### 7.4.1 Prioritize High-Impact Sellers
-Focus improvement initiatives on the small group of sellers responsible for the majority of delayed orders.
-
-#### 7.4.2 Reduce Severe Delivery Delays
+#### 7.4.1 Reduce Severe Delivery Delays
 Target the longest delays first, as they generate the largest decline in customer satisfaction.
 
-#### 7.4.3 Improve Delivery Predictability
-Review delivery commitments in regions exhibiting high delivery variability and inconsistent service levels.
+#### 7.4.2 Prioritize High-Impact Sellers
+Focus improvement initiatives on the small group of sellers responsible for the majority of delayed orders.
 
-#### 7.4.4 Focus on High-Impact Regions
+#### 7.4.3 Focus on High-Impact Regions
 Prioritize operational improvements in states combining high order volumes and elevated delay rates.
 
-## 8. Project Structure
+#### 7.4.4 Improve Delivery Predictability
+Review delivery commitments in regions exhibiting high delivery variability and inconsistent service levels.
+
+
+
+## 8. Conclusion
+This analysis shows that Olist maintains strong overall logistics performance, with more than 93% of orders delivered on time.
+However, delivery issues are concentrated among a limited number of sellers and regions, creating clear opportunities for targeted operational improvements.
+The analysis also highlights that severe delivery delays have a disproportionate impact on customer satisfaction, making them a higher priority than marginal improvements in already reliable deliveries.
+By reducing severe delays, focusing on high-impact sellers, critical regions, and delivery predictability, Olist could improve both logistics performance and customer experience.
+
+## 9. Project Structure
 
 models/
   - staging/
@@ -212,3 +213,7 @@ analyses/
 
 assets/
 - dashboard screenshots and pdf
+
+
+## Resources:
+- Dataset (https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) 
