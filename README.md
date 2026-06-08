@@ -38,9 +38,9 @@ Star schema:
 - Fact table: fct_olist_order_items
 
 - Dimensions:
-  - dim_customers
-  - dim_sellers
-  - dim_products
+  - dim_olist_customers
+  - dim_olist_sellers
+  - dim_olist_products
 
 - Additional Dimensions (Used for time-series analysis and delay segmentation): 
     - dim_date
@@ -66,34 +66,20 @@ Key metrics created:
 
 ## 6. Analysis and Findings
 
-### 6.1 KPIs
-- **Delayed Order Rate** to quantity service failures
-- **On Time Delivery Rate** to measure delivery reliability
-- **Avg delivery time** to measure actual delivery time
-- **Total orders**
-- **Avg delay (days)** to measure delay severity
-- **Delivery Prediction Error** to assess promise accuracy
-- **Delivery Variability** to evaluate delivery consistency
-- **Delay contribution by seller** 
-- **Avg Review Score** to measure satisfation
-- **Low review rate** (% of reviews <= 2)
-- **#Sellers for Pareto** To measure number of sellers driving 80% of delays
-- ...
-
 [Power BI report](https://app.powerbi.com/groups/9416cacc-2758-4c86-862a-3ff396d0efd2/reports/6cb78111-db36-40d3-825b-6e99b96e41f8?ctid=4098d4d7-784b-4d99-a74e-86960f12748a&pbi_source=linkShare)
 
 [Complete report in pdf](https://github.com/seyyes/Brazilian-ecommerce/blob/master/assets/Olist_Brazilian_Ecommerce_Dashboard.pdf)
 
 
 ### 6.1 Logistics Overview
-To Evaluate overall delivery performance and identify logistics bottlenecks.
-### 6.1.2 KPIs
-- **Delayed Order Rate** to quantity service failures
-- **On Time Delivery Rate** to measure delivery reliability
-- **Avg delivery time** to measure actual delivery time
+**Objective**: To Evaluate overall delivery performance and identify logistics bottlenecks.
+### KPIs
+- **Delayed Order Rate**: to quantity service failures
+- **On Time Delivery Rate**: to measure delivery reliability
+- **Avg delivery time**: to measure actual delivery time
 - **Total orders**
-- **Avg delay (days)** to measure delay severity
-- **Delivery Prediction Error** to assess promise accuracy
+- **Avg delay (days)**: to measure delay severity
+- **Delivery Prediction Error**: to assess promise accuracy
 
 ### Key Insights
 - Olist achieves a strong delivery performance, with 93.55% of orders delivered on or before the promised date.
@@ -103,31 +89,48 @@ To Evaluate overall delivery performance and identify logistics bottlenecks.
 - Delay rates tend to increase during high-volume periods, suggesting capacity constraints during demand peaks.
 
 ### Business Interpretation
-Overall logistics performance is strong, but performance is not evenly distributed across the network.
-The combination of high on-time delivery rates and substantial early deliveries suggests that delivery promises may be overly conservative in some regions. While this protects service levels, it may also create opportunities to improve customer expectations through more accurate delivery estimates.
+Overall logistics performance is strong, however, performance is not evenly distributed across the network.
+The combination of high on-time delivery rates and early deliveries suggests that delivery promises may be **overly estimated**. Even if this protects service levels, it may also be wise to reconsider them and provide more accurate ones.
 Regional disparities indicate that improvement efforts should focus on specific areas rather than the entire logistics network.
 
 ![Logistics overview](https://github.com/seyyes/Brazilian-ecommerce/blob/master/assets/logistics_overview.png)
 
 
 ### 6.2 Seller Performance
-To Identify sellers with the greatest impact on logistics performance.
+**Objective**: To Identify sellers with the greatest impact on logistics performance.
+### KPIs
+- **Delayed Order Rate**: to quantity service failures
+- **Avg Handling Time**: to measure handling time
+- **#Sellers for Pareto**: To measure number of sellers driving 80% of delays
+- **Avg delay (Late only)**: to measure delay severity (focussing only on delayed orders)
+- **Total Sellers**
+- **Delivery Variability**: to evaluate delivery consistency
+
 ### Key Insights
 - Delivery delays are highly concentrated among a relatively small group of sellers.
-- A limited number of sellers account for the majority of delayed orders, revealing a strong Pareto effect.
+- A limited number of sellers (341) account for the majority of delayed orders, revealing a strong Pareto effect.
 - Seller performance varies considerably, even among sellers with similar order volumes.
-- High-volume sellers have a disproportionate influence on overall logistics performance.
+- Some high volume and Revenue sellers might be risky with large delays and bad handling time.
+- Late order handling has a huge impact on order delays
 
 ### Business Interpretation
 The analysis suggests that logistics improvement initiatives should prioritize seller-level interventions.
-Because delays are concentrated among a small subset of sellers, targeted improvement programs could generate a larger impact than broad network-wide actions.
+Delays are concentrated among a small subset of sellers and targeted improvement programs could generate a larger impact than broad network-wide actions.
 This finding provides a clear opportunity to improve service quality while minimizing operational effort.
 
 ![Seller performance](https://github.com/seyyes/Brazilian-ecommerce/blob/master/assets/seller_performance.png)
 
 ### 6.3 Customer Satisfaction
 It helps understanding how logistics performance affects customer experience.
-It helps also answering to the question : How does delivery performance affect customer satisfaction?
+It also helps answering to the question : How does delivery performance affect customer satisfaction?
+### KPIs
+- **Delayed Order Rate**: to quantity service failures
+- **Avg Review Score**: to measure satisfation
+- **Low review rate**: % of reviews <= 2
+- **Total orders**
+- **On Time Delivery Rate** to measure delivery reliability
+
+
 ### Key Insights
 - Customer satisfaction declines as delivery delays increase.
 - Delayed orders generate significantly more low ratings than on-time deliveries.
@@ -136,7 +139,7 @@ It helps also answering to the question : How does delivery performance affect c
 
 ### Business Interpretation
 Logistics performance directly influences customer experience.
-While small delays have a limited impact, prolonged delays lead to a sharp deterioration in customer satisfaction.
+While small delays have a limited impact, longer delays lead to a deterioration in customer satisfaction.
 Reducing severe delays is therefore likely to generate greater customer experience improvements than marginally accelerating already on-time deliveries.
 
 ![Customer satisfaction](https://github.com/seyyes/Brazilian-ecommerce/blob/master/assets/customer_satisfaction.png)
@@ -145,7 +148,7 @@ Reducing severe delays is therefore likely to generate greater customer experien
 ## 7. Additional Business Impact Analysis
 
 ### 7.1 Satisfaction Loss by Delay Bucket
-To better understand the customer impact of delays, customer ratings were analyzed across delivery delay categories.
+To better understand the customer impact of delays, customer ratings were analyzed across delivery delay buckets.
 
 ![Satisfaction Loss by Delay Bucket](https://github.com/seyyes/Brazilian-ecommerce/blob/master/assets/DelayBucketVSReviewLoss.png)
 
@@ -158,21 +161,19 @@ Not all delays have the same business impact.
 Long delays generate a disproportionately higher level of customer dissatisfaction compared to short delays.
 
 #### Recommendation
-Prioritize the reduction of severe delays rather than focusing exclusively on improving average delivery times.
-Targeting the longest delays is likely to generate the highest customer satisfaction gains.
+To improve logistic performances and customer satisfaction, it would be better to prioritize the reduction of severe delays. Targeting the longest delays is likely to generate the highest customer satisfaction gains.
 
 ### 7.2 Delivery Variability Risk Analysis
 
 ![Delivery Variability Risk Analysis](https://github.com/seyyes/Brazilian-ecommerce/blob/master/assets/Variability_segment.png)
 
 #### Insight
-Average delivery performance can hide significant operational risk.
-Several states exhibit acceptable average delivery performance while showing high delivery variability, indicating inconsistent service levels.
+Olist's logistics network generally delivers faster than promised across all Brazilian states.
+However, average delivery performance can hide significant operational risks. Delivery performance is not equally predictable and several states (SP, PR MG,...) demonstrate a high level of delivery reliability due to low variability.Unfortunately, states such as AP, RR and SE are showing high delivery variability, indicating inconsistent service levels.
 High variability reduces the reliability of delivery promises and increases operational uncertainty.
 
 #### Recommendation
-Monitor regions with elevated delivery variability and review delivery promises where actual performance is highly inconsistent.
-Improving predictability may create more customer value than reducing average delivery times alone.
+It would be better to monitor regions with elevated delivery variability and provide more accurate delivery promises where actual performance is highly inconsistent.
 
 ### 7.3 States to prioritize
 Where should Olist prioritize operational improvements?
